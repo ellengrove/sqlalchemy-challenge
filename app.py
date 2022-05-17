@@ -92,7 +92,7 @@ def stations():
 
 @app.route("/api/v1.0/tobs")
 def tobs():
-    """Return a list of all stations"""
+    """Return a list of the last year of temperature data for the most active station"""
     session = Session(engine)
 
     # Query temperatures recorded from most active station in the last year with available data
@@ -109,8 +109,7 @@ def tobs():
 
 @app.route("/api/v1.0/<start>/<end>")
 def dynamic_temps(start,end):
-    """Fetch the Justice League character whose real_name matches
-       the path variable supplied by the user, or a 404 if not."""
+    """Return the average, minimum, and maximum temperatures over a time frame supplied by the user"""
 
     session = Session(engine)
 
@@ -148,6 +147,7 @@ def dynamic_temps(start,end):
 
 @app.route("/api/v1.0/<start>")
 def start_temps(start):
+    """Return the average, minimum, and maximum temperatures over a time frame supplied by the user"""
 
     session = Session(engine)
 
